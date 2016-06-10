@@ -87,7 +87,8 @@ var ReactTelephoneInput = React.createClass({
         onChange: React.PropTypes.func,
         onEnterKeyPress: React.PropTypes.func,
         onBlur: React.PropTypes.func,
-        onFocus: React.PropTypes.func
+        onFocus: React.PropTypes.func,
+        disabled: React.PropTypes.bool
     },
     getDefaultProps() {
         return {
@@ -99,7 +100,8 @@ var ReactTelephoneInput = React.createClass({
             isValid: isNumberValid,
             flagsImagePath: 'flags.png',
             onEnterKeyPress: function () {},
-            preferredCountries: []
+            preferredCountries: [],
+            disabled: false
         };
     },
     getNumber() {
@@ -512,7 +514,8 @@ var ReactTelephoneInput = React.createClass({
                     type="tel"
                     className={inputClasses}
                     autoComplete='tel'
-                    placeholder='+1 (702) 123-4567'/>
+                    placeholder='+1 (702) 123-4567'
+                    disabled={this.props.disabled}/>
                 <div ref='flagDropDownButton' className={flagViewClasses} onKeyDown={this.handleKeydown} >
                     <div ref='selectedFlag' onClick={this.handleFlagDropdownClick} className='selected-flag' title={`${this.state.selectedCountry.name}: + ${this.state.selectedCountry.dialCode}`}>
                         <div className={inputFlagClasses} style={this.getFlagStyle()}>
